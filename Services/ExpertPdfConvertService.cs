@@ -17,7 +17,7 @@ namespace Services
             }
             catch (Exception)
             {
-                // Instead of logging here, throw the exception so it can be caught and logged/handled at the caller.
+                // Throw the exception so it can be caught and logged/handled at the caller.
                 throw;
             }
         }
@@ -33,7 +33,7 @@ namespace Services
             }
             catch (Exception)
             {
-                // Instead of logging here, throw the exception so it can be caught and logged/handled at the caller.
+                // Throw the exception so it can be caught and logged/handled at the caller.
                 throw;
             }
         }
