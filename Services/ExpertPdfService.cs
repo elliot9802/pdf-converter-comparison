@@ -1,43 +1,41 @@
 ﻿using System;
 using System.IO;
 using ExpertPdf.HtmlToPdf;
+using Microsoft.Extensions.Logging;
 
 namespace Services
 {
-    public class ExpertPdfService : IPdfConvertService
+    /// <summary>
+    /// Service class responsible for converting HTML content and URLs to PDF format.
+    /// This implementation leverages the ExpertPdf library, specifically using its PdfConverter class.
+    /// The PdfConverter is initialized with predefined settings suitable for the PDF conversion tasks.
+    /// </summary>
+    public class ExpertPdfConvertService : UtilityService
     {
+        private readonly IFileService _fileService;
+        private readonly PdfConverter _pdfConverter;
+
+        public ExpertPdfConvertService(IFileService fileService)
+        {
+            _fileService = fileService;
+            _pdfConverter = CreatePdfConverter();
+        }
         public void ConvertHtmlToPdf(string htmlContent, string outputPath)
         {
-            PdfConverter pdfConverter = CreatePdfConverter();
-
-            try
-            {
-                byte[] pdfBytes = pdfConverter.GetPdfBytesFromHtmlFile(htmlContent);
-                File.WriteAllBytes(outputPath, pdfBytes);
-            }
-            catch (Exception)
-            {
-                // Throw the exception so it can be caught and logged/handled at the caller.
-                throw;
-            }
+            byte[] pdfBytes = _pdfConverter.GetPdfBytesFromHtmlString(htmlContent);
+            _fileService.WriteAllBytes(outputPath, pdfBytes);
         }
 
         public void ConvertUrlToPdf(string urlContent, string outputPath)
         {
-            PdfConverter pdfConverter = CreatePdfConverter();
-
-            try
-            {
-                byte[] pdfBytes = pdfConverter.GetPdfBytesFromUrl(urlContent);
-                File.WriteAllBytes(outputPath, pdfBytes);
-            }
-            catch (Exception)
-            {
-                // Throw the exception so it can be caught and logged/handled at the caller.
-                throw;
-            }
+            byte[] pdfBytes = _pdfConverter.GetPdfBytesFromUrl(urlContent);
+            _fileService.WriteAllBytes(outputPath, pdfBytes);
         }
 
+        /// <summary>
+        /// Creates an instance of PdfConverter with predefined settings.
+        /// </summary>
+        /// <returns>Configured instance of PdfConverter.</returns>
         private PdfConverter CreatePdfConverter()
         {
             PdfConverter pdfConverter = new PdfConverter

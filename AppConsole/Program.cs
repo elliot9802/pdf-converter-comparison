@@ -20,7 +20,7 @@ namespace AppConsole
             // Choose which service to use
             //_pdfService = new ExpertPdfConvertService();
             // Or
-            _pdfService = new NRecoConvertService();
+            _pdfService = new NRecoService();
 
             try
             {

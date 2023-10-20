@@ -1,49 +1,50 @@
 ﻿using System;
 using System.IO;
+using Microsoft.Extensions.Logging;
 using NReco.PdfGenerator;
 
 namespace Services
 {
-    public class NRecoService : IPdfConvertService
+    /// <summary>
+    /// Service class responsible for converting HTML content and URLs to PDF format.
+    /// This implementation leverages the ExpertPdf library, specifically using its PdfConverter class.
+    /// The PdfConverter is initialized with predefined settings suitable for the PDF conversion tasks.
+    /// </summary>
+    public class NRecoService : UtilityService
     {
+        private readonly IFileService _fileService;
+        private readonly HtmlToPdfConverter _pdfConverter;
+
+        public NRecoService(IFileService fileService)
+        {
+            _fileService = fileService;
+            _pdfConverter = CreatePdfConverter();
+        }
         public void ConvertHtmlToPdf(string htmlContent, string outputPath)
         {
-            var htmlToPdf = CreateHtmlToPdfConverter();
-
-            try
-            {
-                var pdfBytes = htmlToPdf.GeneratePdf(htmlContent);
-                File.WriteAllBytes(outputPath, pdfBytes);
-            }
-            catch (Exception)
-            {
-                // Throw the exception so it can be caught and logged/handled at the caller.
-                throw;
-            }
+            byte[] pdfBytes = _pdfConverter.GeneratePdf(htmlContent);
+            _fileService.WriteAllBytes(outputPath, pdfBytes);
         }
 
         public void ConvertUrlToPdf(string urlContent, string outputPath)
         {
-            var htmlToPdf = CreateHtmlToPdfConverter();
-
-            try
-            {
-                htmlToPdf.GeneratePdfFromFile(urlContent, null, outputPath);
-            }
-            catch (Exception)
-            {
-                // Throw the exception so it can be caught and logged/handled at the caller.
-                throw;
-            }
+            _pdfConverter.GeneratePdfFromFile(urlContent, null, outputPath);
+            // The PDF is already written to outputPath, no need to write again
         }
 
-        private HtmlToPdfConverter CreateHtmlToPdfConverter()
+        /// <summary>
+        /// Creates an instance of PdfConverter with predefined settings.
+        /// </summary>
+        /// <returns>Configured instance of PdfConverter.</returns>
+        private HtmlToPdfConverter CreatePdfConverter()
         {
-            return new HtmlToPdfConverter();
-            // Add specific configurations to set for every instance of HtmlToPdfConverter
-            // For instance:
-            // converter.PageFooterHtml = null;
-            // return converter;
+            HtmlToPdfConverter pdfConverter = new HtmlToPdfConverter
+            {
+                Orientation = PageOrientation.Portrait,
+                Size = PageSize.A4
+            };
+
+            return pdfConverter;
         }
     }
 }
