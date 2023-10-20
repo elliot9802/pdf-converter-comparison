@@ -14,17 +14,17 @@ namespace AppConsole
 
         static void Main(string[] args)
         {
-            string htmlContent = File.ReadAllText(@"htmlfilepath");
+            //string htmlContent = File.ReadAllText(@"htmlfilepath");
             string urlContent = @"https://messagequeue.actorsmartbook.se/Templates/ticket.aspx?orderid=3545624&uid=411ffdec-dcbc-491f-a629-8939d26dd031";
 
             // Choose which service to use
-            _pdfService = new ExpertPdfConvertService();
+            //_pdfService = new ExpertPdfConvertService();
             // Or
-            // _pdfService = new NRecoConvertService();
+            _pdfService = new NRecoConvertService();
 
             try
             {
-                ConvertHtmlToPdf(htmlContent);
+                //ConvertHtmlToPdf(htmlContent);
                 ConvertUrlToPdf(urlContent);
                 Console.WriteLine("PDF Conversion done.");
             }

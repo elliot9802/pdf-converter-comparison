@@ -4,7 +4,7 @@ using ExpertPdf.HtmlToPdf;
 
 namespace Services
 {
-    public class ExpertPdfConvertService : IPdfConvertService
+    public class ExpertPdfService : IPdfConvertService
     {
         public void ConvertHtmlToPdf(string htmlContent, string outputPath)
         {

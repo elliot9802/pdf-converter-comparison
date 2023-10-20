@@ -4,7 +4,7 @@ using NReco.PdfGenerator;
 
 namespace Services
 {
-    public class NRecoConvertService : IPdfConvertService
+    public class NRecoService : IPdfConvertService
     {
         public void ConvertHtmlToPdf(string htmlContent, string outputPath)
         {

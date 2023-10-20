@@ -48,10 +48,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExpertPdfConvertService.cs" />
+    <Compile Include="EvoPDFService.cs" />
+    <Compile Include="ExpertPdfService.cs" />
+    <Compile Include="IConvertService.cs" />
     <Compile Include="IPdfConvertService.cs" />
-    <Compile Include="NRecoConvertService.cs" />
+    <Compile Include="IronPDFService.cs" />
+    <Compile Include="NRecoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PuppeteerService.cs" />
+    <Compile Include="SelectService.cs" />
+    <Compile Include="SyncFusionService.cs" />
+    <Compile Include="WinnovativeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
