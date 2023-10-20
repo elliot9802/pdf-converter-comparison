@@ -11,7 +11,7 @@ namespace Services
     /// This implementation leverages the ExpertPdf library, specifically using its PdfConverter class.
     /// The PdfConverter is initialized with predefined settings suitable for the PDF conversion tasks.
     /// </summary>
-    public class IronPdfService : UtilityService
+    public class IronPdfService : IUtilityService
     {
         private readonly IFileService _fileService;
         private readonly ChromePdfRenderer _pdfRenderer;

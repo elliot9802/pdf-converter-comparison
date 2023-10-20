@@ -14,9 +14,9 @@ namespace Services
     public class ConvertService : IConvertService
     {
         private readonly IFileService _fileService;
-        private readonly UtilityService _pdfUtility;
+        private readonly IUtilityService _pdfUtility;
 
-        public ConvertService(IFileService fileService, UtilityService pdfUtility)
+        public ConvertService(IFileService fileService, IUtilityService pdfUtility)
         {
             _fileService = fileService;
             _pdfUtility = pdfUtility;

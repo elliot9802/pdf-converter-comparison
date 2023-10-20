@@ -10,7 +10,7 @@ namespace Services
     /// This implementation leverages the Winnovative library, using its HtmlToPdfConverter class.
     /// The HtmlToPdfConverter is initialized with predefined settings suitable for the PDF conversion tasks.
     /// </summary>
-    public class WinnovativeService : UtilityService
+    public class WinnovativeService : IUtilityService
     {
         private readonly IFileService _fileService;
         private readonly HtmlToPdfConverter _htmlToPdfConverter;

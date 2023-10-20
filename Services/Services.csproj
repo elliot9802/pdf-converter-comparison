@@ -112,14 +112,17 @@
     <Reference Include="Syncfusion.Compression.Base, Version=23.1460.41.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Compression.Base.23.1.41\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.HtmlConverter.Base, Version=23.1460.41.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.HtmlToPdfConverter.WinForms.23.1.41\lib\net46\Syncfusion.HtmlConverter.Base.dll</HintPath>
+    <Reference Include="Syncfusion.Compression.Portable, Version=23.1.41.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Net.Core.23.1.41\lib\netstandard2.0\Syncfusion.Compression.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.HtmlConverter.Portable, Version=23.1.41.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.HtmlToPdfConverter.Net.Windows.23.1.41\lib\netstandard2.0\Syncfusion.HtmlConverter.Portable.dll</HintPath>
     </Reference>
     <Reference Include="Syncfusion.Licensing, Version=23.1460.41.0, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
       <HintPath>..\packages\Syncfusion.Licensing.23.1.41\lib\net46\Syncfusion.Licensing.dll</HintPath>
     </Reference>
-    <Reference Include="Syncfusion.Pdf.Base, Version=23.1460.41.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
-      <HintPath>..\packages\Syncfusion.Pdf.WinForms.23.1.41\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    <Reference Include="Syncfusion.Pdf.Portable, Version=23.1.41.0, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.Net.Core.23.1.41\lib\netstandard2.0\Syncfusion.Pdf.Portable.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -193,6 +196,7 @@
     <Compile Include="FileService.cs" />
     <Compile Include="IConvertService.cs" />
     <Compile Include="IPdfConvertService.cs" />
+    <Compile Include="IPuppeteerService.cs" />
     <Compile Include="IronPDFService.cs" />
     <Compile Include="NRecoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -216,9 +220,9 @@
     <Error Condition="!Exists('..\packages\IronSoftware.Native.PdfModel.2023.9.18743\build\net\IronSoftware.Native.PdfModel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IronSoftware.Native.PdfModel.2023.9.18743\build\net\IronSoftware.Native.PdfModel.targets'))" />
     <Error Condition="!Exists('..\packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets'))" />
     <Error Condition="!Exists('..\packages\IronPdf.Slim.2023.10.3\build\IronPdf.Slim.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\IronPdf.Slim.2023.10.3\build\IronPdf.Slim.props'))" />
-    <Error Condition="!Exists('..\packages\Syncfusion.HtmlToPdfConverter.WinForms.23.1.41\build\net46\Syncfusion.HtmlToPdfConverter.WinForms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Syncfusion.HtmlToPdfConverter.WinForms.23.1.41\build\net46\Syncfusion.HtmlToPdfConverter.WinForms.targets'))" />
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets'))" />
   </Target>
   <Import Project="..\packages\IronSoftware.Native.PdfModel.2023.9.18743\build\net\IronSoftware.Native.PdfModel.targets" Condition="Exists('..\packages\IronSoftware.Native.PdfModel.2023.9.18743\build\net\IronSoftware.Native.PdfModel.targets')" />
   <Import Project="..\packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets" Condition="Exists('..\packages\Grpc.Core.2.46.6\build\net45\Grpc.Core.targets')" />
-  <Import Project="..\packages\Syncfusion.HtmlToPdfConverter.WinForms.23.1.41\build\net46\Syncfusion.HtmlToPdfConverter.WinForms.targets" Condition="Exists('..\packages\Syncfusion.HtmlToPdfConverter.WinForms.23.1.41\build\net46\Syncfusion.HtmlToPdfConverter.WinForms.targets')" />
+  <Import Project="..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
 </Project>
