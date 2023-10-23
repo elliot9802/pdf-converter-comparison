@@ -14,7 +14,8 @@ namespace AppConsole
 
         static void Main(string[] args)
         {
-            string htmlContent = File.ReadAllText(@"htmlfilepath");
+            string htmlContent = @"C:\Users\viesed\OneDrive - Vitecsoftware Group AB\Desktop\HTMLforConverter\HTMLtoPDFConverter-HTMLTemplate\PDFConverter.html";
+            //string htmlContent = File.ReadAllText(@"C:\Users\viesed\OneDrive - Vitecsoftware Group AB\Desktop\HTMLforConverter\HTMLtoPDFConverter-HTMLTemplate\PDFConverter.html");
             string urlContent = @"https://messagequeue.actorsmartbook.se/Templates/ticket.aspx?orderid=3545624&uid=411ffdec-dcbc-491f-a629-8939d26dd031";
 
             // Choose which service to use
@@ -25,7 +26,7 @@ namespace AppConsole
             try
             {
                 ConvertHtmlToPdf(htmlContent);
-                ConvertUrlToPdf(urlContent);
+                //ConvertUrlToPdf(urlContent);
                 Console.WriteLine("PDF Conversion done.");
             }
             catch (Exception ex)
