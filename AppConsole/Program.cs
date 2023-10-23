@@ -44,7 +44,7 @@ namespace AppConsole
                     continue;
                 }
 
-                if (choice == 8)
+                if (choice == 9)
                 {
                     Console.WriteLine("Exiting...");
                     break;
@@ -83,49 +83,59 @@ namespace AppConsole
                         _pdfService = new SyncfusionService(new FileService());
                         serviceIdentifier = "Syncfusion";
                         break;
+                    case 8:
+                        //Same as PuppeteerService, assuming SyncfusionService might need async handling
+                        _pdfService = new WinnovativeService(new FileService());
+                        serviceIdentifier = "Winnovative";
+                        break;
                 }
 
-            try
-            {
-                ConvertHtmlToPdf(htmlContent);
-                ConvertUrlToPdf(urlContent);
-                Console.WriteLine("PDF Conversion done.");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred during PDF conversion: {ex.Message}");
-            }
-
-                // ... [rest of your Main code]
+                try
+                {
+                    // Use the appropriate method based on the service type
+                    if (_pdfService is IPuppeteerService)
+                    {
+                        await ConvertUrlToPdfAsync(urlContent, serviceIdentifier);
+                    }
+                    else
+                    {
+                        ConvertUrlToPdf(urlContent, serviceIdentifier);
+                    }
+                    Console.WriteLine("PDF Conversion done.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"An error occurred during PDF conversion: {ex.Message}");
+                }
             }
         }
 
-            private static void ConvertUrlToPdf(string urlContent, string serviceIdentifier)
+        private static void ConvertUrlToPdf(string urlContent, string serviceIdentifier)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            string outputPath = GenerateOutputFileName($"UrlPDF-{serviceIdentifier}");
+            _pdfService.ConvertUrlToPdf(urlContent, outputPath);
+            stopwatch.Stop();
+            Console.WriteLine($"Time taken for {serviceIdentifier}: {stopwatch.ElapsedMilliseconds} milliseconds");
+        }
+
+        private static async Task ConvertUrlToPdfAsync(string urlContent, string serviceIdentifier)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+            stopwatch.Start();
+            string outputPath = GenerateOutputFileName($"UrlPDF-{serviceIdentifier}");
+
+            if (_pdfService is IPuppeteerService puppeteerService)
             {
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                string outputPath = GenerateOutputFileName($"UrlPDF-{serviceIdentifier}");
-                _pdfService.ConvertUrlToPdf(urlContent, outputPath);
-                stopwatch.Stop();
-                Console.WriteLine($"Time taken for {serviceIdentifier}: {stopwatch.ElapsedMilliseconds} milliseconds");
+                await puppeteerService.ConvertUrlToPdfAsync(urlContent, outputPath);
             }
 
-            private static async Task ConvertUrlToPdfAsync(string urlContent, string serviceIdentifier)
-            {
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
-                string outputPath = GenerateOutputFileName($"UrlPDF-{serviceIdentifier}");
+            stopwatch.Stop();
+            Console.WriteLine($"Time taken for {serviceIdentifier}: {stopwatch.ElapsedMilliseconds} milliseconds");
+        }
 
-                if (_pdfService is IPuppeteerService puppeteerService)
-                {
-                    await puppeteerService.ConvertUrlToPdfAsync(urlContent, outputPath);
-                }
-
-                stopwatch.Stop();
-                Console.WriteLine($"Time taken for {serviceIdentifier}: {stopwatch.ElapsedMilliseconds} milliseconds");
-            }
-
-            private static string GenerateOutputFileName(string identifier)
+        private static string GenerateOutputFileName(string identifier)
         {
             return $"{BaseOutputPath}-{identifier}{FileExtension}";
         }

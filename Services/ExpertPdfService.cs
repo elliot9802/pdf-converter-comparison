@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using ExpertPdf.HtmlToPdf;
-using Microsoft.Extensions.Logging;
+﻿using ExpertPdf.HtmlToPdf;
 
 namespace Services
 {
@@ -44,9 +41,7 @@ namespace Services
                 {
                     PdfPageSize = PdfPageSize.A4,
                     PdfPageOrientation = PDFPageOrientation.Portrait,
-                    PdfCompressionLevel = PdfCompressionLevel.Normal,
-                    ShowHeader = false,
-                    ShowFooter = false
+                    PdfCompressionLevel = PdfCompressionLevel.Best
                 }
             };
 

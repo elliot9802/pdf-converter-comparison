@@ -1,9 +1,6 @@
-﻿using System;
-using System.IO;
-using IronPdf.Imaging;
-using Microsoft.Extensions.Logging;
-using Syncfusion.HtmlConverter;
+﻿using Syncfusion.HtmlConverter;
 using Syncfusion.Pdf;
+using System.IO;
 
 namespace Services
 {

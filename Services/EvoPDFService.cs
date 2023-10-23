@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using Microsoft.Extensions.Logging;
-using EvoPdf;
+﻿using EvoPdf;
 
 namespace Services
 {
@@ -43,7 +40,6 @@ namespace Services
                 PdfDocumentOptions =
                 {
                     PdfPageSize = PdfPageSize.A4,
-                    //PdfPageOrientation = PDFPageOrientation.Portrait,
                     PdfCompressionLevel = PdfCompressionLevel.Normal,
                     ShowHeader = false,
                     ShowFooter = false

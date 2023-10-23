@@ -1,5 +1,4 @@
 ﻿using PuppeteerSharp;
-using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Services

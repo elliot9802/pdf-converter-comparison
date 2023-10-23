@@ -1,7 +1,4 @@
-﻿using PuppeteerSharp;
-using System.Threading.Tasks;
-
-namespace Services
+﻿namespace Services
 {
     /// <summary>
     /// Defines functionalities for PDF conversion.

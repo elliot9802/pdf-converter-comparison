@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using Microsoft.Extensions.Logging;
-using IronPdf;
-using System.Net.Http;
+﻿using IronPdf;
 
 namespace Services
 {
@@ -43,7 +39,7 @@ namespace Services
         {
             ChromePdfRenderer pdfConverter = new ChromePdfRenderer{};
 
-            pdfConverter.RenderingOptions.EnableJavaScript = true;
+            pdfConverter.RenderingOptions.EnableJavaScript = false;
 
             return pdfConverter;
         }

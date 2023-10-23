@@ -1,8 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Net.Http;
-using Microsoft.Extensions.Logging;
-using SelectPdf;
+﻿using SelectPdf;
 
 namespace Services
 {
@@ -49,7 +45,7 @@ namespace Services
                 {
                     PdfPageSize = PdfPageSize.A4,
                     PdfPageOrientation = PdfPageOrientation.Portrait,
-                    PdfCompressionLevel = PdfCompressionLevel.Normal,
+                    PdfCompressionLevel = PdfCompressionLevel.Best,
                 }
             };
 
